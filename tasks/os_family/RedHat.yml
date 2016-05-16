@@ -1,8 +1,26 @@
 ---
-- name: install fish and dependencies
-  yum: name={{ item }} state=latest
+- name: install fish repo on Fedora
+  get_url:
+		url="http://download.opensuse.org/repositories/shells:fish:release:2/Fedora_{{ ansible_distribution_release }}/shells:fish:release:2.repo"
+		dest=/etc/yum.repos.d/fish.repo
+  when: ansible_distribution == "Fedora"
+
+- name: install fish repo on Centos
+  get_url:
+    url="http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_{{ ansible_distribution_release }}/shells:fish:release:2.repo"
+		dest=/etc/yum.repos.d/fish.repo
+  when: ansible_distribution == "CentOS"
+
+- name: install fish repo on Centos
+  get_url:
+    url="http://download.opensuse.org/repositories/shells:fish:release:2/RHEL_7/shells:fish:release:2.repo"
+		dest=/etc/yum.repos.d/fish.repo
+  when: ansible_distribution == "RedHat"
+
+- name: install fish
+	yum: name={{ item }} state=present
   with_items:
+    - fish
     - git
     - mercurial
-    - fish
 

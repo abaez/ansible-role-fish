@@ -1,3 +1,14 @@
 ---
 - name: installing os centric piece first
   include: "os_family/{{ ansible_os_family }}.yml"
+
+- name: install fisherman
+  become: yes
+  get_url:
+    url="git.io/fisherman"
+    dest="{{ user.home }}/.config/fish/functions/fisher.fish"
+    state=present
+
+- name: install bass
+  become: yes
+  command: /usr/bin/fish -c 'fisher eds/bass'

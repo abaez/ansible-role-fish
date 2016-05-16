@@ -2,13 +2,20 @@
 - name: installing os centric piece first
   include: "os_family/{{ ansible_os_family }}.yml"
 
+- name: make the fisherman directory
+  file:
+    path="{{ user.home }}/.config/fish/functions"
+    state=directory
+    owner="{{ user.name }}"
+    mode=0755
+    recurse=yes
+
 - name: install fisherman
   become: yes
   become_user: "{{ user.name }}"
   get_url:
-    url="git.io/fisherman"
+    url="https://git.io/fisherman"
     dest="{{ user.home }}/.config/fish/functions/fisher.fish"
-    state=present
 
 - name: install bass
   become: yes

@@ -36,10 +36,6 @@ To use the role, you need to give become access for the user you want to have th
 - hosts: servers
     roles:
         - abaez.common
-
-- hosts: servers
-    become_user: {{ user.name }}
-    roles:
         - abaez.fish
 ```
 

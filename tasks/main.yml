@@ -4,6 +4,7 @@
 
 - name: install fisherman
   become: yes
+  become_user: "{{ user.name }}"
   get_url:
     url="git.io/fisherman"
     dest="{{ user.home }}/.config/fish/functions/fisher.fish"
@@ -11,4 +12,11 @@
 
 - name: install bass
   become: yes
+  become_user: "{{ user.name }}"
   command: /usr/bin/fish -c 'fisher eds/bass'
+
+
+- name: change the shell to fish
+  user:
+    name="{{ user.name }}"
+    shell=/usr/bin/fish

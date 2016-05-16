@@ -30,12 +30,17 @@ The role requires the [abaez.common][6] role to run properly. This is the only r
 Usage
 -----
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+To use the role, you need to give become access for the user you want to have the shell be installed and configured for. You also need to add the [abaez.common][6] for the role to function. An example can be seen below:
 
 ``` yaml
 - hosts: servers
     roles:
-        - { role: username.rolename, x: 42 }
+        - abaez.common
+
+- hosts: servers
+    become_user: {{ user.name }}
+    roles:
+        - abaez.fish
 ```
 
 Author Information

@@ -1,8 +1,21 @@
 ---
-- name: install fish and dependencies
-  apt: name={{ item }} state=latest
-  with_items:
-    - git
-    - mercurial
-    - fish
+- name: install depends first
+  apt: name=python-apt state=present update_cache=yes
 
+- name: install fish repo
+  apt_repository:
+    repo="deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_8.0/ /"
+    filename="fish"
+    state=present
+    update_cache=yes
+  when: ansible_distribution == "Debian"
+
+- name: install fish repo
+  apt_repository:
+    repo="ppa:fish-shell/release-2"
+    state=present
+    update_cache=yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: install fish
+  apt: name=fish state=present

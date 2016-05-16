@@ -3,22 +3,29 @@ Role Name
 [![license][2i]][2p]
 [![twitter][3i]][3p]
 
-A brief description of the role goes here.
+A role to install fish and fisher
 
 Description
 -----------
 
-Give a description
+Nothing too major. The role installs the shell [fish][4] with [fisher][5].
+It is pretty barren for now except with those two options...
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+There are two variables:
+
+``` yaml
+user.home # the $HOME to have the shell be used in
+user.name # the $USER for the shell to be used in
+```
 
 Requirements
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The role requires the [abaez.common][6] role to run properly. This is the only requirement with the variables that need to be changed.
+
 
 Usage
 -----
@@ -41,3 +48,6 @@ Author Information
 [2p]: ./LICENSE
 [3i]: https://img.shields.io/badge/twitter-a_baez-blue.svg
 [3p]: https://twitter.com/a_baez
+[4]: http://fishshell.com/
+[5]: https://github.com/fisherman/fisherman
+[6]: https://galaxy.ansible.com/abaez/common

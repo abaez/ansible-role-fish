@@ -1,0 +1,8 @@
+---
+- name: install fish and dependencies
+  zypper: name={{ item }} state=latest
+  with_items:
+    - git
+    - mercurial
+    - fish
+

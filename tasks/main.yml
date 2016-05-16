@@ -1,2 +1,3 @@
 ---
-# tasks file for template
+- name: installing os centric piece first
+  include: "os_family/{{ ansible_os_family }}.yml"

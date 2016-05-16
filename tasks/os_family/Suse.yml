@@ -1,6 +1,6 @@
 ---
 - name: install fish and dependencies
-  zypper: name={{ item }} state=latest
+  zypper: name={{ item }} state=present
   with_items:
     - git
     - mercurial

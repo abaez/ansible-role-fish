@@ -20,7 +20,7 @@
 - name: install bass
   become: yes
   become_user: "{{ user.name }}"
-  command: /usr/bin/fish -c 'fisher eds/bass'
+  command: /usr/bin/fish -c 'fisher eds/bass paths'
 
 
 - name: change the shell to fish

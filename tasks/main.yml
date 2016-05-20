@@ -14,13 +14,18 @@
   become: yes
   become_user: "{{ user.name }}"
   get_url:
-    url="https://git.io/fisherman"
-    dest="{{ user.home }}/.config/fish/functions/fisher.fish"
+    url="{{ item.url }}"
+    dest="{{ item.dest }}"
+  with_items:
+    - {url: "https://git.io/fisherman", dest: "{{ user.home }}/.config/fish/functions/fisher.fish"}
+    - {url: "https://git.io/snippet", dest: "{{user.home}}/.config/fish/config.fish"}
 
 - name: install bass
   become: yes
   become_user: "{{ user.name }}"
   command: /usr/bin/fish -c 'fisher eds/bass paths'
+
+
 
 
 - name: change the shell to fish

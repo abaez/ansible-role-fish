@@ -3,7 +3,7 @@ Role Name
 [![license][2i]][2p]
 [![twitter][3i]][3p]
 
-A role to install fish and fisher
+A role to install fish (2.2) and fisher
 
 Description
 -----------
